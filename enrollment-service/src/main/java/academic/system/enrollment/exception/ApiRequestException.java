@@ -1,0 +1,8 @@
+package academic.system.enrollment.exception;
+
+public class ApiRequestException extends RuntimeException {
+
+    public ApiRequestException( String message ) {
+        super( message );
+    }
+}

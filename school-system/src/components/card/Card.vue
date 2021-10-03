@@ -1,0 +1,143 @@
+<script>
+export default {
+    props: {
+        title: { type: String },
+        subtitle: { type: String },
+        filename: { type: String },
+        description: { type: String },
+        to: { type: String },
+    },
+};
+</script>
+
+<template>
+    <div class="container">
+        <div class="card">
+            <img
+                :src="require(`@/assets/${filename}`)"
+                alt=""
+                class="card__img"
+            />
+            <div class="card__data">
+                <h1 class="card__title">{{ title }}</h1>
+                <span class="card__subtitle">{{ subtitle }}</span>
+                <p class="card__description">{{ description }}</p>
+                <router-link :to="to" class="card__button" id="a">
+                    Acceder
+                </router-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+h1,
+p {
+    margin: 0;
+}
+
+#a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    height: 68vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 240px;
+    height: 300px;
+    background-color: var(--dark-color);
+    border-radius: 1rem;
+    padding: 4rem 2rem 0;
+    color: var(--white-color);
+    overflow-y: hidden;
+}
+
+.card__img {
+    position: absolute;
+    width: 240px;
+    filter: drop-shadow(5px 10px 15px rgba(8, 9, 13, 0.4));
+}
+
+.card__data {
+    transform: translateY(13.2rem);
+    text-align: center;
+}
+
+.card__title {
+    font-size: var(--h1-font-size);
+    color: var(--dark-color-lighten);
+    margin-bottom: 0.5rem;
+}
+
+.card__subtitle {
+    display: inline-block;
+    font-size: var(--h2-font-size);
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+}
+
+.card__description {
+    font-size: var(--small-font-size);
+    text-align: initial;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+}
+
+.card__button {
+    display: block;
+    width: max-content;
+    padding: 0.8rem;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: 0.2s;
+    opacity: 0;
+}
+
+.card__button:hover {
+    box-shadow: 0 18px 40px -12px rgba(138, 2, 2, 0.541);
+}
+
+.card__img,
+.card__data,
+.card__title,
+.card__subtitle,
+.card__description {
+    transition: 0.5s;
+}
+
+.card:hover .card__img {
+    transform: translate(0.1rem, -6.5rem);
+}
+
+.card:hover .card__data {
+    transform: translateY(5.8rem);
+}
+
+.card:hover .card__title {
+    transform: translateX(-1.7rem);
+    margin: 15px 0 0 0;
+    text-transform: uppercase;
+}
+
+.card:hover .card__subtitle {
+    transform: translateX(-0.7rem);
+}
+
+.card:hover .card__description,
+.card:hover .card__button {
+    transition-delay: 0.2s;
+    opacity: 1;
+}
+</style>
